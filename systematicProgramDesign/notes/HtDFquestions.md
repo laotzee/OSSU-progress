@@ -1,0 +1,9 @@
+**What makes hard to write a program?** The reason a program is hard to write are: (1) You're given a poorly formed problem (2) The program is too big to solve in one go
+**What are the steps of the HtDF?** (1) Signature, purpose and stub (2) Examples wrapped in check-expect (3) Inventory, Template and constans (4) Code the body (5) Test a debug
+**What function does making a signature, purpose and stub have?** (1) The signature declares the type of data that the function consumes and produces (2) The purpose is a short description of what the function produces in terms of what it consumes (3) Sort of a scaffolding, it allows to verify function name, correct parameters, eventually will be deleted
+**What is the use of examples?** (1) Help us understand what the function must do (2) Multiple examples help illustrate the behaviour of the function (3) When wrapped around check-expect, they serve as unit tests for the completed function.
+**What is the role of a template when designing a function?** It serves as an outlien for the function. It allows to have some idea of how the function structure is going to look like.
+**When a program fails, what might be wrong?** (1) The tests might not be well implemented (2) The function definition might be wrong (3) Both might be wrong
+**What does the term 'Waterfall methodology' means?** A sequential process that flows like a waterfall through all phases of a project, with each phrase completely wrapping up before the next phrase begins
+**What does it mean designing in the context of a program?** It means the process of going from a poorly formed problem, to a well structured solution.
+**Is it recommended to run the code before is finished?** Yes. As long as the program is well-formed, running programs will allow to find mistakes sooner. Finding mistakes one at a time is much eeasier than waiting until later when the mistakes can compound and be more confusing.
