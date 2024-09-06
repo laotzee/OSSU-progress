@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-intermediate-reader.ss" "lang")((modname parameterization-v3) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname parameterization-v3) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 
 
 ;; ListOfString -> Boolean
@@ -25,7 +25,7 @@
 
 (define (contains-mcgill? los) (contains? "McGill" los))
 
-
+;; String (listof String) -> Boolean
 ;; produce true if los includes s
 (check-expect (contains? "UBC" empty) false)
 (check-expect (contains? "UBC" (cons "McGill" empty)) false)
@@ -62,12 +62,14 @@
 
 (define (square-roots lon) (map2 sqrt lon))
 
-
+;; (x -> y) (listof x) -> (listof y)
 ;; given fn and (list n0 n1 ...) produce (list (fn n0) (fn n1) ...)
 (check-expect (map2 sqr empty) empty) 
 (check-expect (map2 sqr (list 2 4)) (list 4 16))
 (check-expect (map2 sqrt (list 16 9)) (list 4 3))
-(check-expect (map2 abs (list 2 -3 4)) (list 2 3 4)) 
+(check-expect (map2 abs (list 2 -3 4)) (list 2 3 4))
+(check-expect (map2 string-length (list "Laotze" "de" "Abreu"))
+              (list 6 2 5))
             
                
 (define (map2 fn lon)
@@ -98,10 +100,14 @@
 
 (define (negative-only lon) (filter2 negative? lon))
 
+;; (x -> boolean), (listof x) -> (listof x)
+;; From the list given, produces a new one that checks the predicate
 
 (check-expect (filter2 positive? empty) empty)
 (check-expect (filter2 positive? (list 1 -2 3 -4)) (list 1 3))
 (check-expect (filter2 negative? (list 1 -2 3 -4)) (list -2 -4))
+(check-expect (filter2 even? (list 3 1 4 5 6 2 3 10 11))
+              (list 4 6 2 10))
 
 (define (filter2 pred lon)
   (cond [(empty? lon) empty]
